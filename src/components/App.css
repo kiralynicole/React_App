@@ -1,0 +1,91 @@
+:root {
+  --primary: #0593a2;
+  --primary-dark: #103778;
+  --secondary: #ff7a48;
+  --secondary-dark: #e3371e;
+  --dark: #151f30;
+
+  --text-color: var(--dark);
+  --error-color: var(--secondary-dark);
+
+  color: var(--text-color);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+
+  font-size: 1.6rem;
+}
+
+.brandForm {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  gap: 1rem;
+
+  & .fullWidth {
+    grid-column: 1 / -1;
+  }
+
+  & .secondColumn {
+    grid-column-start: 2;
+  }
+
+  & > .btn {
+    justify-self: start;
+  }
+
+  & > label {
+    justify-self: end;
+
+    &:has(+ input + .errorMessage) {
+      color: var(--error-color);
+    }
+  }
+
+  & > input:not([type='checkbox'], [type='radio']) {
+    border: 1px solid var(--dark);
+    border-radius: 3px;
+    padding: 0.3rem 0.5rem;
+
+    &:has(+ .errorMessage) {
+      border-color: var(--error-color);
+      outline-color: var(--error-color);
+      color: var(--error-color);
+    }
+  }
+
+  & .errorMessage {
+    grid-column-start: 2;
+
+    margin-top: 0;
+
+    color: var(--error-color);
+  }
+}
+
+.btn {
+  --main-color: var(--primary);
+  --highlight-color: var(--primary-dark);
+  --bg-color: var(--main-color);
+  --text-color: rgba(255, 255, 255, 0.9);
+
+  background-color: var(--bg-color);
+  border: 1px solid var(--highlight-color);
+  border-radius: 3px;
+  color: var(--text-color);
+  cursor: pointer;
+
+  padding: 0.3rem 1rem;
+
+  &:hover {
+    --bg-color: color-mix(in srgb, var(--main-color) 80%, white);
+  }
+}
+
+.btn-secondary {
+  --highlight-color: var(--secondary-dark);
+  --main-color: var(--secondary);
+}
